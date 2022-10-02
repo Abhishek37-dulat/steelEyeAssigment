@@ -37,7 +37,7 @@ errors:
 7.onClick={onClickHandler(index)} -> onClick={()=>onClickHandler(!isSelected)} 
 8.{index} 
 
-Optimized code:
+Optimized code:(go to List.js)
 
 import React, { useState, useEffect, memo } from 'react';
 import PropTypes from 'prop-types';
