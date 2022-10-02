@@ -1,70 +1,205 @@
-# Getting Started with Create React App
+1.Explain what the simple List component does. 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+ 
 
-## Available Scripts
+=> 
 
-In the project directory, you can run:
+List component are used to represent data in particular order as they are easy to maintain. 
 
-### `npm start`
+In this code we are using 'map’ to extract each item from list of  items. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+ 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+2. What problems / warnings are there with code? 
 
-### `npm test`
+ 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+=> 
+![err1](https://user-images.githubusercontent.com/63417558/193464156-b5d08aae-5fd0-41ee-b95d-b743391dd07a.PNG)
+ ![err2](https://user-images.githubusercontent.com/63417558/193464203-3d2e288d-a2ea-4121-a130-9f62a6bb6961.PNG)
+![err3](https://user-images.githubusercontent.com/63417558/193464236-baa6b359-66bd-437d-b0d3-729365faf61f.PNG)
+![err4](https://user-images.githubusercontent.com/63417558/193464240-c5a606c9-3668-4f08-bbe7-aa5570bba561.PNG)
+![err5](https://user-images.githubusercontent.com/63417558/193464243-0047738b-2a59-400b-baab-36ef8d44e973.PNG)
+![err6](https://user-images.githubusercontent.com/63417558/193464246-ddd3a577-26c9-4dd6-a81d-8990c67e38b1.PNG)
+![err7](https://user-images.githubusercontent.com/63417558/193464247-b946fdf6-16de-469e-af53-e8401e348938.PNG)
+![err8](https://user-images.githubusercontent.com/63417558/193464249-85b2e4fb-73ab-4599-b82a-0e0a046c3ff0.PNG)
+![err9](https://user-images.githubusercontent.com/63417558/193464254-119e74ce-3a44-4a19-b49b-ff96f7dfa17c.PNG)
+![codeerr1](https://user-images.githubusercontent.com/63417558/193464269-8fa68589-2e1e-4532-978f-348b498ed5d5.PNG)
+![codeerr2](https://user-images.githubusercontent.com/63417558/193464271-86f38900-db3b-4bb9-b014-701fa6f4335c.PNG)
+![codeerr3](https://user-images.githubusercontent.com/63417558/193464273-121d93f8-c222-4c80-8ea4-9bd660ba5bc2.PNG)
+![codeerr4](https://user-images.githubusercontent.com/63417558/193464274-bd8e82cc-556d-42c4-a5e3-be6bcafac68b.PNG)
+![codeerr5](https://user-images.githubusercontent.com/63417558/193464276-01dc88c8-8b04-480f-bdcf-49ad9cb0e648.PNG)
+![codeerr6](https://user-images.githubusercontent.com/63417558/193464278-08b6ca93-000b-49da-9ced-4929e89aa8ab.PNG)
 
-### `npm run build`
+ 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. Please fix, optimize, and/or modify the component as much as you think is necessary. 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+ 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+=> errors: 
 
-### `npm run eject`
+  
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1.array -> arrayOf 
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2.shapeOf -> shape 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+3.items -> cann't be null 
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+4.onClickHandler={()=>handleClick(index)} -> onClickHandler={handleClick} 
 
-## Learn More
+5.key={index} should be there 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+6.setSelectedIndex(null) -> setSelectedIndex(false)  
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+7.onClick={onClickHandler(index)} -> onClick={()=>onClickHandler(!isSelected)} 
 
-### Code Splitting
+8.{index} 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+ 
 
-### Analyzing the Bundle Size
+Optimized code=> 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+import React, { useState, useEffect, memo } from 'react'; 
 
-### Making a Progressive Web App
+import PropTypes from 'prop-types'; 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+ 
+ 
 
-### Advanced Configuration
+// Single List Item 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+const WrappedSingleListItem = ({ 
 
-### Deployment
+  index, 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+  isSelected, 
 
-### `npm run build` fails to minify
+  onClickHandler, 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+  text, 
+
+}) => { 
+
+  return ( 
+
+    <li 
+
+      style={{ backgroundColor: isSelected ? 'green' : 'red'}} 
+
+      onClick={()=>onClickHandler(!isSelected)} 
+
+    > 
+
+      {index} {text} 
+
+    </li> 
+
+  ); 
+
+}; 
+
+ 
+ 
+
+WrappedSingleListItem.propTypes = { 
+
+  index: PropTypes.number, 
+
+  isSelected: PropTypes.bool, 
+
+  onClickHandler: PropTypes.func.isRequired, 
+
+  text: PropTypes.string.isRequired, 
+
+}; 
+
+ 
+ 
+
+const SingleListItem = memo(WrappedSingleListItem); 
+
+ 
+ 
+
+// List Component 
+
+const WrappedListComponent = ({ 
+
+  items, 
+
+}) => { 
+
+  console.log(items) 
+
+  const [selectedIndex, setSelectedIndex] = useState(); 
+
+ 
+ 
+
+  useEffect(() => { 
+
+    setSelectedIndex(false); 
+
+  }, [items]); 
+
+ 
+ 
+
+  const handleClick = (index) => { 
+
+    setSelectedIndex(index); 
+
+  }; 
+
+ 
+ 
+
+  return ( 
+
+    <ul style={{ textAlign: 'left' }}> 
+
+      {items.map((item, index) => ( 
+
+        <SingleListItem 
+
+          key={index} 
+
+          onClickHandler={handleClick} 
+
+          text={item.text} 
+
+          index={index} 
+
+          isSelected={selectedIndex} 
+
+        /> 
+
+      ))} 
+
+    </ul> 
+
+  ) 
+
+}; 
+
+
+WrappedListComponent.propTypes = { 
+
+  items: PropTypes.arrayOf(PropTypes.shape({ 
+
+    text: PropTypes.string.isRequired, 
+
+  })), 
+
+}; 
+
+WrappedListComponent.defaultProps = { 
+  items: [{text:'h1'},{text:'h1'},{text:'h1'},{text:'h1'},{text:'h1'},{text:'h1'},{text:'h1'},{text:'h1'},{text:'h1'},{text:'h1'}], 
+}; 
+
+
+const List = memo(WrappedListComponent); 
+
+export default List; 
